@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import {Suspense} from "react";
+import { RuteoCompleto } from './app/utilidades/rutas/RuteoCompleto';
+
+const teTocaEsperar = (
+  <button className="btn btn-primary" type="button" disabled>
+  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Cargando...
+</button>
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+<BrowserRouter>
+    <Suspense fallback={teTocaEsperar}>
+        <RuteoCompleto/>
+    </Suspense>
+
+</BrowserRouter>
     </div>
   );
 }
